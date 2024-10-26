@@ -20,28 +20,6 @@ const ContextMenuSub = ContextMenuPrimitive.Sub
 
 const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
 
-/*const CustomContextMenuTrigger = ({ children, onOpenChange = () => {}, ...props }) => {
-  const pointRef = React.useRef({ x: 0, y: 0 });
-
-  const handleOpen = (event) => {
-    pointRef.current = { x: event.clientX, y: event.clientY };
-    onOpenChange(true);
-  };
-
-  return (
-      <ContextMenuPrimitive.Trigger
-          {...props}
-          onContextMenu={(event) => {
-            event.preventDefault();  // 브라우저 기본 우클릭 메뉴 차단
-            handleOpen(event);  // 좌표 설정 및 컨텍스트 메뉴 열기
-          }}
-      >
-        {children}
-      </ContextMenuPrimitive.Trigger>
-  );
-};*/
-
-
 const ContextMenuSubTrigger = React.forwardRef(
     ({className, inset, children, ...props}, ref) => (
 

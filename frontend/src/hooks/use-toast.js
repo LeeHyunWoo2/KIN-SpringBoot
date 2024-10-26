@@ -1,4 +1,3 @@
-"use client";
 // Inspired by react-hot-toast library
 import * as React from "react"
 
@@ -49,7 +48,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { ...t, ...action.toast } : t),
+            t.id === action.toast.id ? { ...t, ...action.toast } : t),
       };
 
     case "DISMISS_TOAST": {
@@ -68,12 +67,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         toasts: state.toasts.map((t) =>
-          t.id === toastId || toastId === undefined
-            ? {
-                ...t,
-                open: false,
-              }
-            : t),
+            t.id === toastId || toastId === undefined
+                ? {
+                  ...t,
+                  open: false,
+                }
+                : t),
       };
     }
     case "REMOVE_TOAST":
@@ -107,10 +106,10 @@ function toast({
   const id = genId()
 
   const update = (props) =>
-    dispatch({
-      type: "UPDATE_TOAST",
-      toast: { ...props, id },
-    })
+      dispatch({
+        type: "UPDATE_TOAST",
+        toast: { ...props, id },
+      })
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id })
 
   dispatch({

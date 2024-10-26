@@ -1,40 +1,20 @@
 import "@/styles/globals.css";
-import Layout from '@/components/Layout';
-import { ToastProvider } from "@/components/ui/toast";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem, ContextMenuTrigger,
-} from "@/components/ui/context-menu";
+import {ToastProvider} from "@/components/ui/toast";
+import {TooltipProvider} from "@/components/ui/tooltip";
+import {Toaster} from "@/components/ui/toaster";
 
-function App({ Component, pageProps }) {
+function App({Component, pageProps}) {
+  const getLayout = Component.getLayout || ((page) => page);
 
-  return (
+  return getLayout(
       <>
-        <ContextMenu>
-          <ContextMenuTrigger>
-            <ContextMenuContent>
-              <ContextMenuItem>Profile</ContextMenuItem>
-              <ContextMenuItem>Billing</ContextMenuItem>
-              <ContextMenuItem>Team</ContextMenuItem>
-              <ContextMenuItem>Subscription</ContextMenuItem>
-            </ContextMenuContent>
-
-        <SidebarProvider>
-          <ToastProvider>
-            <TooltipProvider>
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            </TooltipProvider>
-          </ToastProvider>
-        </SidebarProvider>
-          </ContextMenuTrigger>
-        </ContextMenu>
+            <ToastProvider>
+              <TooltipProvider>
+                  <Component {...pageProps} />
+              </TooltipProvider>
+              <Toaster/>
+            </ToastProvider>
       </>
   );
 }
-
 export default App;
